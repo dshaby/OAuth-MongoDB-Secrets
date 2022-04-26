@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+  <div class="container mt-5 me-3">
+    <h1 class="pb-2">Login</h1>
+
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+
+            <!-- Makes POST request to /login route -->
+            <form action="/login" method="POST">
+              <div class="form-group">
+                <label class="pb-2" for="email">Email</label>
+                <input type="email" class="form-control mb-3" name="username">
+              </div>
+              <div class="form-group">
+                <label class="pb-2" for="password">Password</label>
+                <input type="password" class="form-control mb-3" name="password">
+                <span>
+                  <%=errMessage%>
+                </span>
+              </div>
+              <button type="submit" class="btn btn-dark mt-3">Login</button>
+            </form>
+            <form action="/login/federated/google" method="post">
+              <a class="button google btn-social btn-google" href="/login/federated/google">
+                <i class="fa-brands fa-google"></i>
+                Sign in with Google
+              </a>
+              <% if (messages.error) { %>
+                <p class="error-text">
+                  <%=messages.error%>
+                </p>
+                <% } %>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
